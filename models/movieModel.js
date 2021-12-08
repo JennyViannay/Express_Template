@@ -1,10 +1,10 @@
-// Tous les models import le fichier dbConnect (qui connecte à la base de données)
+// Tous les models importent le fichier dbConnect (qui permet de se connecter à la base de données)
 import dbConnect from '../config/db-config.js';
 
 // Les models contiennent les CRUD et eventuellement des fonctions supplémentaires mais toujours en lien avec la base de données 
 // La plupart des fonctions d'un model retournent une promesse
 
-// on crée une fonction qui va envoyer une requête SQL à la base de données, ici on va chercher tous les films
+// On crée une fonction qui va envoyer une requête SQL à la base de données, ici on va chercher tous les films
 const getAll = () => {
     return new Promise((resolve, reject) => {
         dbConnect.query('SELECT * FROM movie', (err, results) => {
