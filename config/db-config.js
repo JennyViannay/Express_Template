@@ -14,8 +14,8 @@ const dbConnect = mysql.createConnection({
 
 // Test de la connexion à la base de données
 dbConnect.connect((err) => {
-    if (err) console.log('Mysql connection error: ', err);
-    else console.log('Mysql connected');
+    if (err) console.log('🆘 Mysql connection error: ', err);
+    else console.log('✅ Mysql connected');
 });
 
 export default dbConnect;

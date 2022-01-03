@@ -44,7 +44,7 @@ router.delete('/:id', async (req, res) => {
     const id = req.params.id;
     try {
         const result = await Movie.deleteById(id);
-        result ? res.json({message : `MovieId ${id} has been deleted !`}) : res.status(404).json({ message: 'Movie not found' });
+        result ? res.json({message : `MovieId ${id} has been deleted !`}).status(204) : res.status(404).json({ message: 'Movie not found' });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
@@ -69,14 +69,12 @@ router.put('/:id', async (req, res) => {
     try {
         const {error, value} = await schemaMovie.validate(movie)
         const movieUpdate = await Movie.updateMovie(value);
-        if (movieUpdate) res.json(movie);
+        if (movieUpdate) res.status(204);
         else res.status(422).json({ message: error.message });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
 })
-
-
 
 // ne pas oublier l'export router
 export default router;
